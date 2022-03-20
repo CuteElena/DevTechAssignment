@@ -1,0 +1,17 @@
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\obj\Debug\net5.0\Assignment.Business.csproj.AssemblyReference.cache
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\obj\Debug\net5.0\Assignment.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\obj\Debug\net5.0\Assignment.Business.AssemblyInfoInputs.cache
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\obj\Debug\net5.0\Assignment.Business.AssemblyInfo.cs
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\obj\Debug\net5.0\Assignment.Business.csproj.CoreCompileInputs.cache
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\bin\Debug\net5.0\Assignment.Business.deps.json
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\bin\Debug\net5.0\Assignment.Business.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\bin\Debug\net5.0\ref\Assignment.Business.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\bin\Debug\net5.0\Assignment.Business.pdb
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\bin\Debug\net5.0\Assignment.Common.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\bin\Debug\net5.0\Assignment.DataAccess.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\bin\Debug\net5.0\Assignment.Common.pdb
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\bin\Debug\net5.0\Assignment.DataAccess.pdb
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\obj\Debug\net5.0\Assignment.Business.csproj.CopyComplete
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\obj\Debug\net5.0\Assignment.Business.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\obj\Debug\net5.0\ref\Assignment.Business.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Business\obj\Debug\net5.0\Assignment.Business.pdb

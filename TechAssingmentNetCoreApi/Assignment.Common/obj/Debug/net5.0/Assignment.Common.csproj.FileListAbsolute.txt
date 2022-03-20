@@ -1,0 +1,12 @@
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\bin\Debug\net5.0\Assignment.Common.deps.json
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\bin\Debug\net5.0\Assignment.Common.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\bin\Debug\net5.0\ref\Assignment.Common.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\bin\Debug\net5.0\Assignment.Common.pdb
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\obj\Debug\net5.0\Assignment.Common.csproj.AssemblyReference.cache
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\obj\Debug\net5.0\Assignment.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\obj\Debug\net5.0\Assignment.Common.AssemblyInfoInputs.cache
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\obj\Debug\net5.0\Assignment.Common.AssemblyInfo.cs
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\obj\Debug\net5.0\Assignment.Common.csproj.CoreCompileInputs.cache
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\obj\Debug\net5.0\Assignment.Common.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\obj\Debug\net5.0\ref\Assignment.Common.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.Common\obj\Debug\net5.0\Assignment.Common.pdb

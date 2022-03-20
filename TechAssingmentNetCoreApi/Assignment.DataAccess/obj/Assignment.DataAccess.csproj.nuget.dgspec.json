@@ -1,0 +1,136 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\OnePay\\EPZ\\TestWorkSpace\\DevTechAssignment\\TechAssingmentNetCoreApi\\Assignment.DataAccess\\Assignment.DataAccess.csproj": {}
+  },
+  "projects": {
+    "C:\\OnePay\\EPZ\\TestWorkSpace\\DevTechAssignment\\TechAssingmentNetCoreApi\\Assignment.Common\\Assignment.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\OnePay\\EPZ\\TestWorkSpace\\DevTechAssignment\\TechAssingmentNetCoreApi\\Assignment.Common\\Assignment.Common.csproj",
+        "projectName": "Assignment.Common",
+        "projectPath": "C:\\OnePay\\EPZ\\TestWorkSpace\\DevTechAssignment\\TechAssingmentNetCoreApi\\Assignment.Common\\Assignment.Common.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\OnePay\\EPZ\\TestWorkSpace\\DevTechAssignment\\TechAssingmentNetCoreApi\\Assignment.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\OnePay\\EPZ\\TestWorkSpace\\DevTechAssignment\\TechAssingmentNetCoreApi\\Assignment.DataAccess\\Assignment.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\OnePay\\EPZ\\TestWorkSpace\\DevTechAssignment\\TechAssingmentNetCoreApi\\Assignment.DataAccess\\Assignment.DataAccess.csproj",
+        "projectName": "Assignment.DataAccess",
+        "projectPath": "C:\\OnePay\\EPZ\\TestWorkSpace\\DevTechAssignment\\TechAssingmentNetCoreApi\\Assignment.DataAccess\\Assignment.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\OnePay\\EPZ\\TestWorkSpace\\DevTechAssignment\\TechAssingmentNetCoreApi\\Assignment.DataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\OnePay\\EPZ\\TestWorkSpace\\DevTechAssignment\\TechAssingmentNetCoreApi\\Assignment.Common\\Assignment.Common.csproj": {
+                "projectPath": "C:\\OnePay\\EPZ\\TestWorkSpace\\DevTechAssignment\\TechAssingmentNetCoreApi\\Assignment.Common\\Assignment.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.28, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

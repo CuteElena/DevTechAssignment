@@ -1,0 +1,15 @@
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\obj\Debug\net5.0\Assignment.DataAccess.csproj.AssemblyReference.cache
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\obj\Debug\net5.0\Assignment.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\obj\Debug\net5.0\Assignment.DataAccess.AssemblyInfoInputs.cache
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\obj\Debug\net5.0\Assignment.DataAccess.AssemblyInfo.cs
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\obj\Debug\net5.0\Assignment.DataAccess.csproj.CoreCompileInputs.cache
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\bin\Debug\net5.0\Assignment.DataAccess.deps.json
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\bin\Debug\net5.0\Assignment.DataAccess.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\bin\Debug\net5.0\ref\Assignment.DataAccess.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\bin\Debug\net5.0\Assignment.DataAccess.pdb
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\bin\Debug\net5.0\Assignment.Common.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\bin\Debug\net5.0\Assignment.Common.pdb
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\obj\Debug\net5.0\Assignment.DataAccess.csproj.CopyComplete
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\obj\Debug\net5.0\Assignment.DataAccess.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\obj\Debug\net5.0\ref\Assignment.DataAccess.dll
+C:\OnePay\EPZ\TestWorkSpace\DevTechAssignment\TechAssingmentNetCoreApi\Assignment.DataAccess\obj\Debug\net5.0\Assignment.DataAccess.pdb
