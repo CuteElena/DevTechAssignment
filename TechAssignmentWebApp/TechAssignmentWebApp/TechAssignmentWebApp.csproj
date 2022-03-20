@@ -117,19 +117,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiRepository\ApiServiceRepository.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\ManageFile\Controllers\FileController.cs" />
+    <Compile Include="Areas\ManageFile\ManageFileAreaRegistration.cs" />
+    <Compile Include="Areas\ManageFile\Models\UploadFileModel.cs" />
     <Compile Include="Areas\Redirect\Controllers\ErrorController.cs" />
     <Compile Include="Areas\Redirect\RedirectAreaRegistration.cs" />
+    <Compile Include="BaseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlExtensions.cs" />
     <Compile Include="Helpers\HtmlUtility.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
+    <Compile Include="Models\UploadFileApiModel.cs" />
+    <Compile Include="Models\ResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -653,6 +660,8 @@
     <Content Include="Areas\Dashboard\Views\web.config" />
     <Content Include="Areas\Redirect\Views\Error\PageNotFound.cshtml" />
     <Content Include="Areas\Redirect\Views\web.config" />
+    <Content Include="Areas\ManageFile\Views\File\UploadFile.cshtml" />
+    <Content Include="Areas\ManageFile\Views\web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -692,9 +701,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\Dashboard\Views\Shared\" />
+    <Folder Include="Areas\ManageFile\Views\Shared\" />
     <Folder Include="Areas\Redirect\Models\" />
     <Folder Include="Areas\Redirect\Views\Shared\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

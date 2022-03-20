@@ -4,16 +4,16 @@
 <aside id="menu">
     <div id="navigation">
 
-        @{
-           // @{Html.RenderPartial("~/Views/_LoginUserInfo.cshtml");}
-            
-           
-        }
+        
         <ul class="nav" id="side-menu">
             <li class="@Html.IsActive("Home", "Index", "Dashboard")">@Html.ActionLink("Dashboard", "Index", "Home", new { Area = "Dashboard" }, new { })</li>
+            <li class="@Html.IsActive("Manage Files")">
+                <a href="#"><span class="nav-label">Manage Files</span><span class="fa arrow"></span> </a>
+                <ul class="nav nav-second-level">
+                    <li class="@Html.IsActive("File", "Index", "ManageFile")">@Html.ActionLink("Upload File", "Index", "File", new { Area = "ManageFile" }, new { })</li>
 
-           
-            
+                </ul>
+            </li>
         </ul>
     </div>
 </aside>
