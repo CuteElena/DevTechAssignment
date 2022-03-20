@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Page title -->
+    <title>Elena HR System| Next generation admin panel</title>
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="/Content/vendor/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="/Content/vendor/metisMenu/dist/metisMenu.css" />
+    <link rel="stylesheet" href="/Content/vendor/animate.css/animate.css" />
+    <link rel="stylesheet" href="/Content/vendor/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/vendor/datatables.net-bs/css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" href="/Content/vendor/toastr/build/toastr.min.css" />
+    <link rel="stylesheet" href="/Content/vendor/toggle/bootstrap-toggle.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/vendor/ladda/dist/ladda-themeless.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/vendor/sweetalert/lib/sweet-alert.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/vendor/timepicker/css/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="~/Content/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" />
+    <!-- App styles -->
+
+    <link rel="stylesheet" href="/Content/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="/Content/fonts/pe-icon-7-stroke/css/helper.css" />
+    <link rel="stylesheet" href="/Content/styles/style.css">
+
+    <!-- Vendor scripts -->
+    <script src="/Content/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/Content/vendor/jquery-ui/jquery-ui.min.js"></script>
+
+</head>
+<body class="fixed-navbar fixed-footer fixed-small-header sidebar-scroll">
+    <!-- Header -->
+    <div id="header">
+        <div class="color-line">
+        </div>
+        <div id="logo" class="light-version">
+            <span>
+                HR Admin Dashboard
+            </span>
+        </div>
+        @*@{Html.RenderPartial("~/Views/_TopNavigationBar.cshtml");}*@
+    </div>
+
+    <!-- Navigation -->
+    @{Html.RenderPartial("~/Views/_Navigation.cshtml");}
+
+    <!-- Main Wrapper -->
+    <div id="wrapper">
+        @{Html.RenderPartial("~/Views/_SmallHeader.cshtml");}
+        @RenderBody()
+        @{Html.RenderPartial("~/Views/_RightSidebar.cshtml");}
+        @{Html.RenderPartial("~/Views/_Footer.cshtml");}
+    </div>
+
+    <script src="/Content/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="/Content/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/Content/vendor/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="/Content/vendor/iCheck/icheck.min.js"></script>
+
+    <script src="/Content/vendor/jquery-flot/jquery.flot.js"></script>
+    <script src="/Content/vendor/jquery-flot/jquery.flot.resize.js"></script>
+    <script src="/Content/vendor/jquery-flot/jquery.flot.pie.js"></script>
+    <script src="/Content/vendor/flot.curvedlines/curvedLines.js"></script>
+    <script src="/Content/vendor/jquery.flot.spline/index.js"></script>
+
+    <script src="/Content/vendor/peity/jquery.peity.min.js"></script>
+    <script src="/Content/vendor/sparkline/index.js"></script>
+    <script src="/Content/vendor/toastr/build/toastr.min.js"></script>
+    <script src="/Content/vendor/ladda/dist/spin.min.js"></script>
+    <script src="/Content/vendor/ladda/dist/ladda.min.js"></script>
+    <script src="/Content/vendor/ladda/dist/ladda.jquery.min.js"></script>
+    <script src="/Content/vendor/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="/Content/vendor/moment/moment.js"></script>
+    <script src="/Content/vendor/timepicker/js/daterangepicker.js"></script>
+    <script src="/Content/vendor/toggle/bootstrap-toggle.js"></script>
+
+    <!-- DataTables -->
+    <script src="/Content/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="/Content/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+    <!-- DataTables buttons scripts -->
+    <script src="/Content/vendor/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/Content/vendor/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/Content/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/Content/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/Content/vendor/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/Content/vendor/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+
+    <!-- App scripts -->
+    <script src="/Content/scripts/homer.js"></script>
+    <script src="/Content/scripts/charts.js"></script>
+
+    <!-- App scripts -->
+    <script src="/Content/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/Content/vendor/jquery-validation/jquery.validate.unobtrusive.js"></script>
+    <script src="/Content/vendor/xeditable/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
+    <!-- Date Picker-->
+    <script src="~/Content/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- Nested Table-->
+    <script src="~/Content/vendor/nestable/jquery.nestable.js"></script>
+</body>
+</html>

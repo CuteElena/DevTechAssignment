@@ -1,0 +1,5 @@
+﻿@model MetaRobotsHelperModel
+
+@if (Model.CurrentNode != null && !string.IsNullOrEmpty(Model.CurrentNode.MetaRobotsContent)) {
+    <meta name="robots" content="@Model.CurrentNode.MetaRobotsContent" />
+}

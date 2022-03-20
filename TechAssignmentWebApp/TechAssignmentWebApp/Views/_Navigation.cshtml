@@ -1,0 +1,19 @@
+﻿@using System.Diagnostics
+@using TechAssignmentWebApp.Helpers
+
+<aside id="menu">
+    <div id="navigation">
+
+        @{
+           // @{Html.RenderPartial("~/Views/_LoginUserInfo.cshtml");}
+            
+           
+        }
+        <ul class="nav" id="side-menu">
+            <li class="@Html.IsActive("Home", "Index", "Dashboard")">@Html.ActionLink("Dashboard", "Index", "Home", new { Area = "Dashboard" }, new { })</li>
+
+           
+            
+        </ul>
+    </div>
+</aside>

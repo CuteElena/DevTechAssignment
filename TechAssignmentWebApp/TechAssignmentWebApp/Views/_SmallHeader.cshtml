@@ -1,0 +1,15 @@
+﻿@using TechAssignmentWebApp.Helpers
+
+<div class="small-header">
+    <div class="hpanel">
+        <div class="panel-body">
+            <div id="hbreadcrumb" class="pull-right">
+                @Html.Raw(Html.BuildBreadcrumbNavigation())
+            </div>
+            <h2 class="font-light m-b-xs">
+                @ViewBag.Title                
+            </h2>
+            <small>@ViewBag.PageDescription</small>
+        </div>
+    </div>
+</div>
