@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "File Detail Report";
+    ViewBag.PageDescription = "List of all file detail informatino.";
+    Layout = "~/Views/_LayoutPage.cshtml";
+
+    var fileId = 0;
+    if ((int)ViewData["FileId"] != 0)
+    {
+        fileId = (int)ViewData["FileId"];
+    }
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-default pull-right" type="button" onclick=" document.location.href = '@Url.Action("Index", "File")' "><i class="pe-7s-browser"></i>Go File List</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hpanel">
+                <div class="panel-body">
+                    <table id="tblFileDetail" class="table table-striped table-bordered table-hover" width="100%">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>TransactionId</th>
+                                <th>Amount</th>
+                                <th>Currency</th>
+                                <th>TransactionDate</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    var tblFileDetail = $('#tblFileDetail');
+
+    $(document).ready(function () {
+
+        bindData();
+
+    })
+
+
+
+    function bindData(fileId) {
+
+        tblFileDetail = $('#tblFileDetail').DataTable({
+            "ajax": {
+                url: "/ManageFile/File/GetAllFileDetail?fileId=@fileId",
+                type: "POST",
+                datatype: "json",
+            },
+            dom: "<'row'<'col-sm-5'l><'col-sm-7 text-right'B>><'row'<'col-sm-12't>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            // "lengthMenu": [[10, 25, 50], ['10', 25, 50]],
+            "processing": true,
+            "serverSide": true,
+            'autoWidth': true,
+            "searching": false,
+            "ordering": false,
+            "info": true,
+            "bDestroy": true,
+            "pagingType": "full_numbers",
+            "language": {
+                "emptyTable": "No data found , Please click on <b> Add New </b> Button",
+                "info": "Showing _START_ to _END_ of _TOTAL_ records",
+                "infoEmpty": "Showing 0 to 0 of 0 entries"
+            },
+            "columns": [
+                { "data": null, "sortable": false, render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
+                { "data": "TransactionId", "defaultContent": "" },
+                { "data": "Amount", "defaultContent": "" },
+                { "data": "Currency", "defaultContent": "" },
+                {
+                    data: "TransactionDate", "defaultContent": "",
+                    "render": function (data) {
+                        return moment(data).format('DD/MM/YYYY h:mm:ss');
+                    }
+                },
+                { "data": "Status", "defaultContent": "" },
+
+            ],
+            buttons: [
+                {
+                    extend: 'csv',
+                    title: 'File Information Detail',
+                    className: 'btn-sm',
+                    action: ExportFile
+                },
+                {
+                    extend: 'pdf',
+                    orientation: 'landscape',
+                    pagesize: 'A4',
+                    title: 'File Information Detail',
+                    className: 'btn-sm',
+                    action: ExportFile
+                }]
+            //buttons: [
+            //    { extend: 'copy', className: 'btn-sm' },
+            //    { extend: 'csv', title: 'ExampleFile', className: 'btn-sm' },
+            //    { extend: 'pdf', title: 'ExampleFile', className: 'btn-sm' },
+            //    { extend: 'print', className: 'btn-sm' }
+            //]
+        });
+    }
+
+    var ExportFile = function (e, dt, button, config) {
+        var oldStart = dt.settings()[0]._iDisplayStart;
+        dt.one('preXhr', function (e, s, data) {
+            data.start = 0;
+            data.length = -1;
+            dt.one('preDraw', function (e, settings) {
+                if (button[0].className.indexOf('buttons-csv') >= 0) {
+                    $.fn.dataTable.ext.buttons.csvHtml5.available(dt, config) ? $.fn.dataTable.ext.buttons.csvHtml5.action.call(this, e, dt, button, config) : $.fn.dataTable.ext.buttons.csvFlash.action.call(this, e, dt, button, config);
+                }
+                else if (button[0].className.indexOf('buttons-pdf') >= 0) {
+                    $.fn.dataTable.ext.buttons.pdfHtml5.available(dt, config) ? $.fn.dataTable.ext.buttons.pdfHtml5.action.call(this, e, dt, button, config) : $.fn.dataTable.ext.buttons.pdfFlash.action.call(this, e, dt, button, config);
+                }
+                dt.one('preXhr', function (e, s, data) {
+                    settings._iDisplayStart = oldStart;
+                    data.start = oldStart;
+                });
+                setTimeout(dt.ajax.reload, 0);
+                return false;
+            });
+        });
+        dt.ajax.reload();
+    };
+
+</script>

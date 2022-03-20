@@ -79,5 +79,36 @@ namespace TechAssignmentWebApp.ApiRepository
 
             }
         }
+
+        public Task<HttpResponseMessage> GetAllUploadFileDetailByFileId(string url, int fileId)
+        {
+            try
+            {
+
+                var reqModel = new { FileId = fileId };
+                string requestJson = JsonConvert.SerializeObject(reqModel);
+                HttpContent content = new StringContent(requestJson, Encoding.UTF8, "application/json");
+
+                var apiUrl = client.BaseAddress + url;
+                var response = client.PostAsync(apiUrl, content).Result;
+
+                return Task.FromResult(response);
+
+            }
+            catch (Exception ex)
+            {
+                var responseModel = new ResponseModel();
+                responseModel.RespCode = "099";
+                responseModel.RespDescription = "System Error [" + ex.Message + "]";
+
+                var response = new HttpResponseMessage()
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(responseModel))
+                };
+
+                return Task.FromResult(response);
+
+            }
+        }
     }
 }

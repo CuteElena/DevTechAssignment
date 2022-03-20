@@ -117,6 +117,42 @@ namespace TechAssignmentWebApp.Areas.ManageFile.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public ActionResult GetAllFileDetail(int fileId, int draw, int start, int length)
+        {
+            var httpResponse = apiRepository.GetAllUploadFileDetailByFileId("API/GeAllFileDetailsByFile", fileId).Result;
+            httpResponse.EnsureSuccessStatusCode();
+            var response = httpResponse.Content.ReadAsStringAsync().Result;
+            var fileResponse = JsonConvert.DeserializeObject<ReportFilterResponseModel>(response);
+            if (fileResponse.RespCode != "000") return Json(new { draw = draw, recordsTotal = 0, recordsFiltered = 0, data = "" }, JsonRequestBehavior.AllowGet);
+
+            var lstModel = new List<FileDetailModel>();
+            foreach (DataRow row in fileResponse.lstData.Rows)
+            {
+                var model = new FileDetailModel();
+                model.Id = Convert.ToInt32(row["Id"].ToString());
+                model.FileName = row["FileName"].ToString();
+                model.FileId = Convert.ToInt32(row["FileId"].ToString());
+                model.TransactionId = row["TransactionId"].ToString();
+                model.Amount = Convert.ToDecimal(row["Amount"].ToString());
+                model.Currency = row["Currency"].ToString();
+                model.Status = row["Status"].ToString();
+                model.TransactionDate = Convert.ToDateTime(row["TransactionDate"].ToString());
+
+                lstModel.Add(model);
+            }
+
+            var result = new
+            {
+                draw = draw,
+                recordsTotal = lstModel.Count,
+                recordsFiltered = lstModel.Count,
+                data = lstModel
+            };
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }
