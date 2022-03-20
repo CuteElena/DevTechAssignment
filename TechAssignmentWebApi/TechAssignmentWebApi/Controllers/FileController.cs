@@ -149,5 +149,167 @@ namespace TechAssignmentWebApi.Controllers
 
         }
 
+        [HttpPost]
+        [Route("API/GetTransactionsByCurrency")]
+        public async Task<HttpResponseMessage> GetTransactionsByCurrencyFilterAsync([FromBody] ReportFilterModel requestModel)
+        {
+            var startTime = DateTime.Now;
+            string errMsg = "";
+            var respData = "";
+            var apiUtility = new ApiUtility();
+
+
+            try
+            {
+
+                #region Validation                              
+
+                if (string.IsNullOrEmpty(requestModel.Currency))
+                {
+                    errMsg = "Currency is required.";
+                    return await Task.FromResult(apiUtility.GetHttpAPIResponse("012", errMsg));
+                }
+
+                #endregion
+
+                #region CheckFileValidation
+
+                var dataReturn = await _businessLogic.GetTransactionsByCurrencyFilter(requestModel.Currency);
+                if (dataReturn.RespCode != "000")
+                {
+                    errMsg = dataReturn.RespDescription;
+                }
+
+                response = new HttpResponseMessage()
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(dataReturn))
+                };
+                respData = JsonConvert.SerializeObject(dataReturn);
+                return await Task.FromResult(response);
+
+                #endregion
+
+
+            }
+            catch (Exception ex)
+            {
+                errMsg = ex.Message;
+                var requestFilePath = ApiUtility.ExceptionLineAndFile(ex);
+                var response = apiUtility.GetAPIExceptionResponse(ex);
+                return await Task.FromResult(response);
+            }
+
+        }
+
+        [HttpPost]
+        [Route("API/GetTransactionsByStatus")]
+        public async Task<HttpResponseMessage> GetTransactionsByStatusFilterAsync([FromBody] ReportFilterModel requestModel)
+        {
+            var startTime = DateTime.Now;
+            string errMsg = "";
+            var respData = "";
+            var apiUtility = new ApiUtility();
+
+
+            try
+            {
+
+                #region Validation                              
+
+                if (string.IsNullOrEmpty(requestModel.Status))
+                {
+                    errMsg = "Status is required.";
+                    return await Task.FromResult(apiUtility.GetHttpAPIResponse("012", errMsg));
+                }
+
+                #endregion
+
+                #region CheckFileValidation
+
+                var dataReturn = await _businessLogic.GetTransactionsByStatusFilter(requestModel.Status);
+                if (dataReturn.RespCode != "000")
+                {
+                    errMsg = dataReturn.RespDescription;
+                }
+
+                response = new HttpResponseMessage()
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(dataReturn))
+                };
+                respData = JsonConvert.SerializeObject(dataReturn);
+                return await Task.FromResult(response);
+
+                #endregion
+
+
+            }
+            catch (Exception ex)
+            {
+                errMsg = ex.Message;
+                var requestFilePath = ApiUtility.ExceptionLineAndFile(ex);
+                var response = apiUtility.GetAPIExceptionResponse(ex);
+                return await Task.FromResult(response);
+            }
+
+        }
+
+        [HttpPost]
+        [Route("API/GetTransactionsByDate")]
+        public async Task<HttpResponseMessage> GetTransactionsByDateFilterAsync([FromBody] ReportFilterModel requestModel)
+        {
+            var startTime = DateTime.Now;
+            string errMsg = "";
+            var respData = "";
+            var apiUtility = new ApiUtility();
+
+
+            try
+            {
+
+                #region Validation                              
+
+                if (requestModel.StartDate == null)
+                {
+                    errMsg = "Start Date is required.";
+                    return await Task.FromResult(apiUtility.GetHttpAPIResponse("012", errMsg));
+                }
+
+                if (requestModel.EndDate == null)
+                {
+                    errMsg = "End Date is required.";
+                    return await Task.FromResult(apiUtility.GetHttpAPIResponse("012", errMsg));
+                }
+
+                #endregion
+
+                #region CheckFileValidation
+
+                var dataReturn = await _businessLogic.GetTransactionsByDateFilter(requestModel.StartDate, requestModel.EndDate);
+                if (dataReturn.RespCode != "000")
+                {
+                    errMsg = dataReturn.RespDescription;
+                }
+
+                response = new HttpResponseMessage()
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(dataReturn))
+                };
+                respData = JsonConvert.SerializeObject(dataReturn);
+                return await Task.FromResult(response);
+
+                #endregion
+
+
+            }
+            catch (Exception ex)
+            {
+                errMsg = ex.Message;
+                var requestFilePath = ApiUtility.ExceptionLineAndFile(ex);
+                var response = apiUtility.GetAPIExceptionResponse(ex);
+                return await Task.FromResult(response);
+            }
+
+        }
+
     }
 }

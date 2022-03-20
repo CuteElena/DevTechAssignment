@@ -71,5 +71,57 @@ namespace TechAssignmentWebApi.Domain.BusinessLogic.Impl
                 return resModel;
             }
         }
+
+        public async Task<ReportFilterResponseModel> GetTransactionsByCurrencyFilter(string currency)
+        {
+            var response = new ReportFilterResponseModel();
+            var dataReturn = await _dataAccessBase.GetTransactionsByCurrencyFilter(currency);
+
+            if (!ApiUtility.CheckNullorEmptyDataTable(dataReturn))
+            {
+                response.RespCode = "011";
+                response.RespDescription = "No Record Found";
+                return response;
+            }
+            response.lstData = dataReturn;
+            response.RespCode = "000";
+            response.RespDescription = "Success";
+            return response;
+        }
+
+        public async Task<ReportFilterResponseModel> GetTransactionsByStatusFilter(string status)
+        {
+            var response = new ReportFilterResponseModel();
+            var dataReturn = await _dataAccessBase.GetTransactionsByStatusFilter(status);
+
+            if (!ApiUtility.CheckNullorEmptyDataTable(dataReturn))
+            {
+                response.RespCode = "011";
+                response.RespDescription = "No Record Found";
+                return response;
+            }
+            response.lstData = dataReturn;
+            response.RespCode = "000";
+            response.RespDescription = "Success";
+            return response;
+        }
+
+        public async Task<ReportFilterResponseModel> GetTransactionsByDateFilter(DateTime startDate, DateTime endDate)
+        {
+            var response = new ReportFilterResponseModel();
+            var dataReturn = await _dataAccessBase.GetTransactionsByDateFilter(startDate, endDate);
+
+            if (!ApiUtility.CheckNullorEmptyDataTable(dataReturn))
+            {
+                response.RespCode = "011";
+                response.RespDescription = "No Record Found";
+                return response;
+            }
+            response.lstData = dataReturn;
+            response.RespCode = "000";
+            response.RespDescription = "Success";
+            return response;
+        }
+
     }
 }

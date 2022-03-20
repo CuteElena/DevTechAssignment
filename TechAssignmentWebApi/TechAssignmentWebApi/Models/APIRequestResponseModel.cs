@@ -24,6 +24,18 @@ namespace TechAssignmentWebApi.Models
 
     }
 
-   
+    public class ReportFilterModel
+    {
+        public string Currency { get; set; }
+        public string Status { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+    }
+
+    public class ReportFilterResponseModel : ResponseModel
+    {
+        public DataTable lstData { get; set; }
+
+    }
 
 }

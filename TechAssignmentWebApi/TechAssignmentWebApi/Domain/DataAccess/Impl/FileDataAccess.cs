@@ -24,15 +24,12 @@ namespace TechAssignmentWebApi.Domain.DataAccess.Impl
             Connection = new MySqlConnection(strConnection);
         }
 
-        
-
         MySqlTransaction Transaction
         {
             get { return this.transaction; }
 
             set { this.transaction = value; }
         }
-
        
         public async Task<FileSaveResponseModel> SaveBulkFile(FileModel file)
         {
@@ -163,6 +160,147 @@ namespace TechAssignmentWebApi.Domain.DataAccess.Impl
                 }
             }
 
+        }
+
+        public async Task<DataTable> GetTransactionsByCurrencyFilter(string currency)
+        {
+            MySqlCommand cmd = null;
+            var errorMesg = string.Empty;
+            DataTable dt = new DataTable();
+
+            string query = "SELECT TransactionId as Id ,concat(Amount ,' ',Currency) as Payment, "
+                         + " CASE "
+                         + "     WHEN Status = 'Approved' THEN 'A' "
+                         + "      WHEN Status = 'Rejected' OR Status = 'Failed' THEN 'R' "
+                         + "     WHEN Status = 'Finished' OR Status = 'Done' THEN 'D' "
+                         + "  END as Status "
+                         + " FROM UploadFileDetail Where currency= @currency Order by Id";
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(strConnection))
+                {
+                    await conn.OpenAsync();
+                    cmd = new MySqlCommand();
+                    cmd = conn.CreateCommand();
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@currency", currency);
+                    var reader = await cmd.ExecuteReaderAsync();
+                    dt.Load(reader);
+                    reader.Close();
+                    conn.Close();
+                    return dt;
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                errorMesg = ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                cmd?.Connection.Close();
+
+            }
+        }
+
+        public async Task<DataTable> GetTransactionsByStatusFilter(string status)
+        {
+            MySqlCommand cmd = null;
+            var errorMesg = string.Empty;
+            DataTable dt = new DataTable();
+
+            string query = "SELECT TransactionId as Id ,concat(Amount ,' ',Currency) as Payment, "
+                          + " CASE "
+                          + "     WHEN Status = 'Approved' THEN 'A' "
+                          + "     WHEN Status = 'Rejected' OR Status = 'Failed' THEN 'R' "
+                          + "     WHEN Status = 'Finished' OR Status = 'Done' THEN 'D' "
+                          + "  END as Status "
+                          + " FROM UploadFileDetail ";
+
+
+            if (!string.IsNullOrEmpty(status))
+            {
+                if (status == "A") query += "Where Status = 'Approved'";
+                if (status == "R") query += "Where Status = 'Failed' OR Status = 'Rejected'";
+                if (status == "D") query += "Where Status = 'Finished' OR Status = 'Done'";
+            }
+            query += "  Order by Id ";
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(strConnection))
+                {
+                    await conn.OpenAsync();
+                    cmd = new MySqlCommand();
+                    cmd = conn.CreateCommand();
+                    cmd.CommandText = query;
+                    var reader = await cmd.ExecuteReaderAsync();
+                    dt.Load(reader);
+                    reader.Close();
+                    conn.Close();
+                    return dt;
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                errorMesg = ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                cmd?.Connection.Close();
+
+            }
+        }
+
+        public async Task<DataTable> GetTransactionsByDateFilter(DateTime startDate, DateTime endDate)
+        {
+            MySqlCommand cmd = null;
+            var errorMesg = string.Empty;
+            DataTable dt = new DataTable();
+
+            string query = "SELECT TransactionId as Id ,concat(Amount ,' ',Currency) as Payment, "
+                           + " CASE "
+                           + "     WHEN Status = 'Approved' THEN 'A' "
+                           + "      WHEN Status = 'Rejected' OR Status = 'Failed' THEN 'R' "
+                           + "     WHEN Status = 'Finished' OR Status = 'Done' THEN 'D' "
+                           + "  END as Status "
+                           + " FROM UploadFileDetail Where TransactionDate BETWEEN @startDate AND @endDate Order by Id";
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(strConnection))
+                {
+                    await conn.OpenAsync();
+                    cmd = new MySqlCommand();
+                    cmd = conn.CreateCommand();
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@startDate", startDate);
+                    cmd.Parameters.AddWithValue("@endDate", endDate);
+                    var reader = await cmd.ExecuteReaderAsync();
+                    dt.Load(reader);
+                    reader.Close();
+                    conn.Close();
+                    return dt;
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                errorMesg = ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                cmd?.Connection.Close();
+
+            }
         }
     }
 }
