@@ -157,7 +157,7 @@ namespace TechAssignmentWebApi.Helpers
                 DateTime txnDate;
                 if (!DateTime.TryParse(data.TransactionDate, out txnDate))
                 {
-                    string format = "dd/MM/yyyy h:mm:ss";
+                    string format = "dd/MM/yyyy hh:mm:ss";
                     DateTime dateTime;
                     if (!DateTime.TryParseExact(data.TransactionDate, format, CultureInfo.InvariantCulture,
                         DateTimeStyles.None, out dateTime))

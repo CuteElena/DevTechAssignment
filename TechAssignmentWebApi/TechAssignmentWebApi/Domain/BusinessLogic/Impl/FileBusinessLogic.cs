@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -23,6 +24,17 @@ namespace TechAssignmentWebApi.Domain.BusinessLogic.Impl
 
         public async Task<FileUploadResponseModel> UploadFile(FileUploadRequestModel reqModel)
         {
+            string projectBulkFilepath = HttpContext.Current.Server.MapPath("~/BulkUploadFiles");
+            if (!Directory.Exists(projectBulkFilepath))
+            {
+                Directory.CreateDirectory(projectBulkFilepath);
+            }
+
+            var today = DateTime.UtcNow.ToString("ddMMyyyy");
+            var path = projectBulkFilepath + @"\" +  today;
+
+            FileDrop(path + @"\" + "Upload", reqModel.FileName+reqModel.FileType, reqModel.FileContent);
+
             var resModel = new FileUploadResponseModel();
             try
             {
@@ -39,6 +51,8 @@ namespace TechAssignmentWebApi.Domain.BusinessLogic.Impl
 
                 if (dt.Rows.Count == 0)
                 {
+                    FileDrop(path + @"\" + "Error", reqModel.FileName + reqModel.FileType, null);
+
                     resModel.RespCode = "014";
                     resModel.RespDescription = "Invalid File";
                     return resModel;
@@ -49,6 +63,8 @@ namespace TechAssignmentWebApi.Domain.BusinessLogic.Impl
                 var checkResponse = ApiUtility.CheckDataValue(records, reqModel.FileType);
                 if (checkResponse.RespCode != "000")
                 {
+                    FileDrop(path + @"\" + "Error", reqModel.FileName + reqModel.FileType, null);
+                  
                     resModel.RespCode = checkResponse.RespCode;
                     resModel.RespDescription = checkResponse.RespDescription;
                     return resModel;
@@ -75,6 +91,7 @@ namespace TechAssignmentWebApi.Domain.BusinessLogic.Impl
                     
                 }
 
+                FileDrop(path + @"\" + "Success", reqModel.FileName + reqModel.FileType, null);
 
                 resModel.RespCode = "000";
                 resModel.RespDescription = "File Upload Successfully";
@@ -183,6 +200,31 @@ namespace TechAssignmentWebApi.Domain.BusinessLogic.Impl
             response.RespCode = "000";
             response.RespDescription = "Success";
             return response;
+        }
+
+        private void FileDrop(string path, string fileName, byte[] fileContent)
+        {
+            
+            if (File.Exists(path + @"\" + fileName)) File.Delete(path + @"\" + fileName);
+
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+           
+            if (path.Contains("Success") || path.Contains("Error"))
+            {
+                var destFolder = string.Empty;
+                if (path.Contains("Success")) destFolder = "Success";
+                else if (path.Contains("Error")) destFolder = "Error";
+
+                var destinationPath = path + @"\" + fileName;
+                var sourcePath = path.Replace(destFolder, "Upload") + @"\" + fileName;
+               
+                File.Move(sourcePath, destinationPath);
+            }
+            else File.WriteAllBytes(path + @"\" + fileName, fileContent);
         }
     }
 }

@@ -110,7 +110,7 @@ namespace TechAssignmentWebApi.Domain.DataAccess.Impl
                         cmd = conn.CreateCommand();
                         cmd.CommandText = query;
 
-                        string format = "dd/MM/yyyy h:mm:ss";
+                        string format = "dd/MM/yyyy hh:mm:ss";
                         var transactionDate = new DateTime();
                         DateTime txnDate;
                         if (DateTime.TryParseExact(fileDetail.TransactionDate, format, CultureInfo.InvariantCulture,
@@ -118,11 +118,6 @@ namespace TechAssignmentWebApi.Domain.DataAccess.Impl
                         else transactionDate = DateTime.Parse(fileDetail.TransactionDate);
                         var status = fileDetail.Status;
                         if (!string.IsNullOrEmpty(status)) fileDetail.Status = status.Trim();
-
-                        //string status = string.Empty;
-                        //if (fileDetail.Status == "Approved") status = "A";
-                        //if (fileDetail.Status == "Failed" || fileDetail.Status == "Rejected") status = "R";
-                        //if (fileDetail.Status == "Finished" || fileDetail.Status == "Done") status = "D";
 
                         cmd.Parameters.AddWithValue("@FileId", fileId);
                         cmd.Parameters.AddWithValue("@TransactionId", fileDetail.TransactionId);
