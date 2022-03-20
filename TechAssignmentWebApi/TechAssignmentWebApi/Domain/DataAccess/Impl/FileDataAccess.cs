@@ -30,7 +30,7 @@ namespace TechAssignmentWebApi.Domain.DataAccess.Impl
 
             set { this.transaction = value; }
         }
-       
+
         public async Task<FileSaveResponseModel> SaveBulkFile(FileModel file)
         {
             MySqlCommand cmd = null;
@@ -283,6 +283,123 @@ namespace TechAssignmentWebApi.Domain.DataAccess.Impl
                     cmd.Parameters.AddWithValue("@startDate", startDate);
                     cmd.Parameters.AddWithValue("@endDate", endDate);
                     var reader = await cmd.ExecuteReaderAsync();
+                    dt.Load(reader);
+                    reader.Close();
+                    conn.Close();
+                    return dt;
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                errorMesg = ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                cmd?.Connection.Close();
+
+            }
+        }
+
+        public async Task<DataTable> GetAllUploadFile()
+        {
+            MySqlCommand cmd = null;
+            var errorMesg = string.Empty;
+            DataTable dt = new DataTable();
+
+            string query = "select * from UploadFile  order by Id desc ; ";
+
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(strConnection))
+                {
+                    await conn.OpenAsync();
+                    cmd = new MySqlCommand();
+                    cmd = conn.CreateCommand();
+                    cmd.CommandText = query;
+                    var reader = await cmd.ExecuteReaderAsync();
+                    dt.Load(reader);
+                    reader.Close();
+                    conn.Close();
+                    return dt;
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                errorMesg = ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                cmd?.Connection.Close();
+
+            }
+        }
+
+        public async Task<DataTable> GetAllUploadFileDetailByFileId(int fileId)
+        {
+            MySqlCommand cmd = null;
+            var errorMesg = string.Empty;
+            DataTable dt = new DataTable();
+
+            string query = @"select f.Name as FileName , d.* from UploadFileDetail d inner join UploadFile f 
+                    on d.FileId = f.Id Where FileId = @FileId order by Id desc";
+
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(strConnection))
+                {
+                    await conn.OpenAsync();
+                    cmd = new MySqlCommand();
+                    cmd = conn.CreateCommand();
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@FileId", fileId);
+                    var reader = await cmd.ExecuteReaderAsync();                 
+                    dt.Load(reader);
+                    reader.Close();
+                    conn.Close();
+                    return dt;
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                errorMesg = ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                cmd?.Connection.Close();
+
+            }
+        }
+
+        public async Task<DataTable> GeUploadFileById(int fileId)
+        {
+            MySqlCommand cmd = null;
+            var errorMesg = string.Empty;
+            DataTable dt = new DataTable();
+
+            string query = "select Id from UploadFile Where Id = @Id;";
+
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(strConnection))
+                {
+                    await conn.OpenAsync();
+                    cmd = new MySqlCommand();
+                    cmd = conn.CreateCommand();
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@Id", fileId);
+                    var reader = await cmd.ExecuteReaderAsync();                   
                     dt.Load(reader);
                     reader.Close();
                     conn.Close();

@@ -10,12 +10,24 @@ namespace TechAssignmentWebApi.Models
     {
     }
 
+    public class FileDetailRequestModel 
+    {
+        public int FileId { get; set; }
+
+    }
+
     public class FileUploadRequestModel
     {
         public string FileName { get; set; }
         public string FileType { get; set; }
         public int FileSize { get; set; }
         public byte[] FileContent { get; set; }
+    }
+
+    public class FileUploadResponseModel : ResponseModel
+    {
+        public int TotalRecords { get; set; }
+
     }
 
     public class FileSaveResponseModel : ResponseModel

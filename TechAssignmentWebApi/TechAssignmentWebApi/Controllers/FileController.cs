@@ -149,6 +149,102 @@ namespace TechAssignmentWebApi.Controllers
 
         }
 
+        [HttpGet]
+        [Route("API/GetAllUploadFiles")]
+        public async Task<HttpResponseMessage> GetAllUploadFiles()
+        {
+            var startTime = DateTime.Now;
+            string errMsg = "";
+            var respData = "";
+            var apiUtility = new ApiUtility();
+
+
+            try
+            {
+
+              
+
+                #region CheckFileValidation
+
+                var dataReturn = await _businessLogic.GetAllUploadFile();
+                if (dataReturn.RespCode != "000")
+                {
+                    errMsg = dataReturn.RespDescription;
+                }
+
+                response = new HttpResponseMessage()
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(dataReturn))
+                };
+                respData = JsonConvert.SerializeObject(dataReturn);
+                return await Task.FromResult(response);
+
+                #endregion
+
+
+            }
+            catch (Exception ex)
+            {
+                errMsg = ex.Message;
+                var requestFilePath = ApiUtility.ExceptionLineAndFile(ex);
+                var response = apiUtility.GetAPIExceptionResponse(ex);
+                return await Task.FromResult(response);
+            }
+
+        }
+
+        [HttpPost]
+        [Route("API/GeAllFileDetailsByFile")]
+        public async Task<HttpResponseMessage> GeAllFileDetailsByFile([FromBody] FileDetailRequestModel requestModel)
+        {
+            var startTime = DateTime.Now;
+            string errMsg = "";
+            var respData = "";
+            var apiUtility = new ApiUtility();
+
+
+            try
+            {
+
+
+                #region Validation                              
+
+                if (requestModel.FileId <= 0)
+                {
+                    errMsg = "File Id is required.";
+                    return await Task.FromResult(apiUtility.GetHttpAPIResponse("012", errMsg));
+                }
+
+                #endregion
+
+              
+
+                var dataReturn = await _businessLogic.GetAllUploadFileDetailByFileId(requestModel.FileId);
+                if (dataReturn.RespCode != "000")
+                {
+                    errMsg = dataReturn.RespDescription;
+                }
+
+                response = new HttpResponseMessage()
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(dataReturn))
+                };
+                respData = JsonConvert.SerializeObject(dataReturn);
+                return await Task.FromResult(response);
+
+               
+
+
+            }
+            catch (Exception ex)
+            {
+                errMsg = ex.Message;
+                var requestFilePath = ApiUtility.ExceptionLineAndFile(ex);
+                var response = apiUtility.GetAPIExceptionResponse(ex);
+                return await Task.FromResult(response);
+            }
+
+        }
         [HttpPost]
         [Route("API/GetTransactionsByCurrency")]
         public async Task<HttpResponseMessage> GetTransactionsByCurrencyFilterAsync([FromBody] ReportFilterModel requestModel)
@@ -172,8 +268,7 @@ namespace TechAssignmentWebApi.Controllers
 
                 #endregion
 
-                #region CheckFileValidation
-
+              
                 var dataReturn = await _businessLogic.GetTransactionsByCurrencyFilter(requestModel.Currency);
                 if (dataReturn.RespCode != "000")
                 {
@@ -187,7 +282,7 @@ namespace TechAssignmentWebApi.Controllers
                 respData = JsonConvert.SerializeObject(dataReturn);
                 return await Task.FromResult(response);
 
-                #endregion
+               
 
 
             }
@@ -224,8 +319,7 @@ namespace TechAssignmentWebApi.Controllers
 
                 #endregion
 
-                #region CheckFileValidation
-
+              
                 var dataReturn = await _businessLogic.GetTransactionsByStatusFilter(requestModel.Status);
                 if (dataReturn.RespCode != "000")
                 {
@@ -239,8 +333,7 @@ namespace TechAssignmentWebApi.Controllers
                 respData = JsonConvert.SerializeObject(dataReturn);
                 return await Task.FromResult(response);
 
-                #endregion
-
+              
 
             }
             catch (Exception ex)
@@ -282,8 +375,7 @@ namespace TechAssignmentWebApi.Controllers
 
                 #endregion
 
-                #region CheckFileValidation
-
+               
                 var dataReturn = await _businessLogic.GetTransactionsByDateFilter(requestModel.StartDate, requestModel.EndDate);
                 if (dataReturn.RespCode != "000")
                 {
@@ -297,8 +389,7 @@ namespace TechAssignmentWebApi.Controllers
                 respData = JsonConvert.SerializeObject(dataReturn);
                 return await Task.FromResult(response);
 
-                #endregion
-
+               
 
             }
             catch (Exception ex)

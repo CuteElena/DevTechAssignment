@@ -170,13 +170,13 @@ namespace TechAssignmentWebApi.Helpers
 
                 if (fileType == ".csv")
                 {
-                    if (!(data.Status == "Approved" || data.Status == "Failed" || data.Status == "Finished"))
+                    if (!(data.Status.Trim() == "Approved" || data.Status.Trim() == "Failed" || data.Status.Trim() == "Finished"))
                         return new ResponseModel("017", "Invalid Status");
 
                 }
                 else if (fileType == ".xml")
                 {
-                    if (!(data.Status == "Approved" || data.Status == "Rejected" || data.Status == "Done"))
+                    if (!(data.Status.Trim() == "Approved" || data.Status.Trim() == "Rejected" || data.Status.Trim() == "Done"))
                         return new ResponseModel("017", "Invalid Status");
 
                 }

@@ -21,9 +21,9 @@ namespace TechAssignmentWebApi.Domain.BusinessLogic.Impl
 
         }
 
-        public async Task<ResponseModel> UploadFile(FileUploadRequestModel reqModel)
+        public async Task<FileUploadResponseModel> UploadFile(FileUploadRequestModel reqModel)
         {
-            var resModel = new ResponseModel();
+            var resModel = new FileUploadResponseModel();
             try
             {
 
@@ -47,21 +47,38 @@ namespace TechAssignmentWebApi.Domain.BusinessLogic.Impl
                 records = ApiUtility.ConvertDataTable<UploadFileModel>(dt);
 
                 var checkResponse = ApiUtility.CheckDataValue(records, reqModel.FileType);
-                if (checkResponse.RespCode != "000") return checkResponse;
+                if (checkResponse.RespCode != "000")
+                {
+                    resModel.RespCode = checkResponse.RespCode;
+                    resModel.RespDescription = checkResponse.RespDescription;
+                    return resModel;
+                }
 
                 var fileType = reqModel.FileType.Replace(".", string.Empty);
                 var fileModel = new FileModel(reqModel.FileName, fileType, reqModel.FileSize, records.Count, DateTime.Now);
                 var saveReturn = await _dataAccessBase.SaveBulkFile(fileModel);
-                if (saveReturn.RespCode != "000") return saveReturn;
+                if (saveReturn.RespCode != "000")
+                {
+                    resModel.RespCode = saveReturn.RespCode;
+                    resModel.RespDescription = saveReturn.RespDescription;
+                    return resModel;
+                }
 
                 fileModel.Id = saveReturn.FileId;
 
                 var detailSaveReturn = await _dataAccessBase.SaveUploadFileDeatail(records, fileModel.Id);
-                if (detailSaveReturn.RespCode != "000") return detailSaveReturn;
+                if (detailSaveReturn.RespCode != "000")
+                {
+                    resModel.RespCode = detailSaveReturn.RespCode;
+                    resModel.RespDescription = detailSaveReturn.RespDescription;
+                    return resModel;
+                    
+                }
 
 
                 resModel.RespCode = "000";
-                resModel.RespDescription = "Success";
+                resModel.RespDescription = "File Upload Successfully";
+                resModel.TotalRecords = records.Count;
                 return resModel;
             }
             catch (Exception ex)
@@ -123,5 +140,49 @@ namespace TechAssignmentWebApi.Domain.BusinessLogic.Impl
             return response;
         }
 
+        public async Task<ReportFilterResponseModel> GetAllUploadFile()
+        {
+            var response = new ReportFilterResponseModel();
+            var dataReturn = await _dataAccessBase.GetAllUploadFile();
+
+            if (!ApiUtility.CheckNullorEmptyDataTable(dataReturn))
+            {
+                response.RespCode = "011";
+                response.RespDescription = "No Record Found";
+                return response;
+
+            }
+            response.lstData = dataReturn;
+            response.RespCode = "000";
+            response.RespDescription = "Success";
+            return response;
+        }
+
+        public async Task<ReportFilterResponseModel> GetAllUploadFileDetailByFileId(int fileId)
+        {
+            var response = new ReportFilterResponseModel();
+            var fReturn = await _dataAccessBase.GeUploadFileById(fileId);
+
+            if (!ApiUtility.CheckNullorEmptyDataTable(fReturn))
+            {
+                response.RespCode = "013";
+                response.RespDescription = "Invalid File Id";
+                return response;
+
+            }
+
+            var dataReturn = await _dataAccessBase.GetAllUploadFileDetailByFileId(fileId);
+            if (!ApiUtility.CheckNullorEmptyDataTable(dataReturn))
+            {
+                response.RespCode = "011";
+                response.RespDescription = "No Record Found";
+                return response;
+
+            }
+            response.lstData = dataReturn;
+            response.RespCode = "000";
+            response.RespDescription = "Success";
+            return response;
+        }
     }
 }
